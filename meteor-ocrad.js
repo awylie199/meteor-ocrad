@@ -1,8 +1,16 @@
+if ( Meteor && Meteor.isServer ) {
+    OCRAD = Npm.require('ocrad.js');
+} else if ( Meteor && Meteor.isClient ) {
+    console.log(this);
+} else {
+    throw new Error('Error - Meteor-Ocrad Package: Neither Client nor Server');
+}
+
 Meteor.startup(function() {
   "use strict";
 
   if (typeof OCRAD !== 'undefined') {
-    console.log("Not undefined");
+    OCRAD && console.log( "OCRAD defined : ", OCRAD );
   }
 
   /*( OCRAD => {
